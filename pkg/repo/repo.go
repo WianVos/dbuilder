@@ -106,7 +106,7 @@ func (r *Repo) SetConfig(c config.Config) {
 
 func (r *Repo) Execute() error {
 	for _, t := range r.Templates {
-		err := t.Write(r.BuildDir, r.Config)
+		err := t.Write(r.BuildDir, r.Config.GetVariablesForEnvironment("test", true))
 		if err != nil {
 			return err
 		}

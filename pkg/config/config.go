@@ -53,3 +53,23 @@ func readConfigFromString(s string) (Config, error) {
 	// }
 	return config, nil
 }
+
+func (c *Config) GetVariablesForEnvironment(e string, d bool) map[string]string {
+
+	o := map[string]string{}
+
+	if d == true {
+		if env, ok := c.Environments["default"]; ok {
+			o = env.Variables
+		}
+	}
+
+	if env, ok := c.Environments[e]; ok {
+		for k, v := range env.Variables {
+			o[k] = v
+		}
+	}
+
+	return o
+
+}
