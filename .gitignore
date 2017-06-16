@@ -15,6 +15,7 @@
 .glide/
 
 test*
+.build
 
 
 .DS_Store
